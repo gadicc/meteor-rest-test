@@ -1,0 +1,9 @@
+pre:not(:empty) {
+	border: 1px solid #aaa;
+	padding: 10px;
+	background: #fafafa;
+}
+
+pre:empty + p {
+	display: none;
+}

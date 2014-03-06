@@ -1,0 +1,88 @@
+<head>
+  <title>meteor-rest</title>
+</head>
+
+<body>
+  <h1>Meteor REST Test (using HTTP.call)</h1>
+
+  {{> testOptions}}
+  {{> testResult}}
+</body>
+
+<template name="testOptions">
+	<p>
+		Method:
+		<select id="method">
+			<option value="GET">GET</option>
+			<option value="POST">POST</option>
+			<option value="PUT">PUT</option>
+			<option value="DELETE">DELETE</option>
+		</select>
+	</p>
+
+	<p>
+		URL: <input id="url" value="/restTest" /> (try /)
+	</p>
+
+	<p>
+		Options (see <a href="http://docs.meteor.com/#http_call">http_call</a>
+		in Meteor docs)
+	</p>
+
+	<p>
+		<b>content</b> - String to use as the HTTP request body.<br />
+		<textarea id="content"></textarea>
+	</p>
+
+	<p>
+		<b>data</b> - in JSON here (object in API), overrides content above, e.g. {"a":1}<br />
+		<textarea id="data"></textarea>
+	</p>
+
+	<p>
+		<b>query</b> - Query string to go in the URL. Overwrites any query string in url.<br />
+		<textarea id="query"></textarea>
+	</p>
+
+	<p>
+		<b>params</b> - in JSON here (object in API), placed in URL (for GET) or body (for POST).  If content
+		or data is specified, params will always be placed in the URL.<br />
+		<textarea id="params"></textarea>
+	</p>
+
+	<p>
+		<b>auth</b> - "username:password"<br />
+		<input id="auth" />
+	</p>
+
+	<p>
+		<b>headers</b> - in JSON<br />
+		<textarea id="headers"></textarea>
+	</p>
+
+	<button id="send">Send</button>
+
+</template>
+
+<template name="testResult">
+	<h2>Request</h2>
+	{{#with data}}
+
+		{{#if time}}
+			<p>Received at {{time}}</p>
+			{{{obj req}}}
+		{{else}}
+			<p>Nothing received yet</p>
+		{{/if}}
+
+	{{/with}}
+
+	<h2>Response</h2>
+	<pre id="error"></pre>
+	<pre id="response"></pre>
+
+	<p>
+		<b>content</b><br />
+		<pre id="responseContent"></pre>
+	</p>
+</template>
