@@ -7,5 +7,6 @@ standard-app-packages
 autopublish
 insecure
 preserve-inputs
-npm
+meteorhacks:npm
 http
+standard-minifiers
