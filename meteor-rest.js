@@ -61,8 +61,8 @@ if (Meteor.isServer) {
 			incoming.update({}, { req: {} });
 	});
 
-	var connect = Meteor.require('connect');
-	var Fiber = Meteor.require('fibers');
+	var connect = Meteor.npmRequire('connect');
+	var Fiber = Meteor.npmRequire('fibers');
 	WebApp.connectHandlers
 	    .use(connect.urlencoded())  // these two replace
 	    .use(connect.json())        // the old bodyParser
